@@ -42,9 +42,7 @@ const TopSkills = () => {
 
   return (
     <div className="p-3 md:py-5 md:px-2">
-      <h1 className="md:text-3xl font-bold text-red-600">
-        Skills in Development
-      </h1>
+      <h1 className="md:text-3xl font-bold text-red-600">Top Skills</h1>
       <div className="flex justify-center items-center">
         <BarChart
           xAxis={[{ scaleType: "band", data: skills }]}
