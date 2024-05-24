@@ -2,28 +2,12 @@
 /* eslint-disable react/prop-types */
 import { BarChart } from "@mui/x-charts/BarChart";
 import { axisClasses } from "@mui/x-charts/ChartsAxis";
-import { useEffect, useState } from "react";
-import useAxios from "../service/useAxios";
+import { useSelector } from "react-redux";
 
 const Activity = () => {
-  const [data, setData] = useState([]);
-  const { axiosPublic } = useAxios();
+  const { data } = useSelector((state) => state.data);
 
   const info = data?.activity_hours;
-
-  const getData = async () => {
-    try {
-      const fetcedData = await axiosPublic();
-
-      setData(fetcedData.data.data);
-    } catch (error) {
-      console.log("Data fetched error");
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const chartSetting = {
     yAxis: [

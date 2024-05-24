@@ -1,26 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { Card, Typography } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
-import useAxios from "../service/useAxios";
+import { useSelector } from "react-redux";
 const Progress = () => {
-  const [data, setData] = useState([]);
-  const { axiosPublic } = useAxios();
-  const getData = async () => {
-    try {
-      const fetcedData = await axiosPublic();
+  const { data } = useSelector((state) => state.data);
 
-      setData(fetcedData.data.data);
-    } catch (error) {
-      console.log("Data fetched error");
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  console.log("data :>> ", data);
   const TABLE_HEAD = [
     "Assigned To",
     "Description",

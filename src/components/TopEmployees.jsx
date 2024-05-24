@@ -1,25 +1,10 @@
 // TopEmployees.js
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import useAxios from "../service/useAxios";
+import { useSelector } from "react-redux";
 import EmployeeCard from "./EmployeeCard";
 
 const TopEmployees = () => {
-  const [data, setData] = useState([]);
-  const { axiosPublic } = useAxios();
-
-  const getData = async () => {
-    try {
-      const fetcedData = await axiosPublic();
-      setData(fetcedData.data.data);
-    } catch (error) {
-      console.log("Data fetched error");
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const { data } = useSelector((state) => state.data);
 
   return (
     <div className="p-3  md:h-[500px]  md:px-2 ">

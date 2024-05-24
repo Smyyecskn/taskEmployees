@@ -17,15 +17,18 @@ import Teams from "./components/Teams";
 import TopEmployees from "./components/TopEmployees";
 import TopSkills from "./components/TopSkills";
 import UpcomingCourse from "./components/UpcomingCourse";
+import { setData } from "./features/dataSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
   const { axiosPublic } = useAxios();
   const getData = async () => {
     try {
       const fetcedData = await axiosPublic();
 
-      setData(fetcedData.data.data);
+      dispatch(setData(fetcedData.data.data));
     } catch (error) {
       console.log("Data fetched error");
     }
@@ -35,15 +38,14 @@ function App() {
     getData();
   }, []);
 
-  // console.log("data :>> ", data);
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home data={data} />}>
+        <Route path="/" element={<Home />}>
           <Route index element={<Activity />} />
           <Route path="activity" element={<Activity />} />
-          <Route path="score" element={<Score data={data} />} />
+          <Route path="score" element={<Score />} />
           <Route path="progress" element={<Progress />} />
           <Route path="devskill" element={<DevSkill />} />
           <Route path="teams" element={<Teams />} />

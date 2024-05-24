@@ -30,7 +30,7 @@ const Home = () => {
       </div>
       <Outlet />
 
-      <div className=" absolute top-[13rem] right-[0.6rem]  md:top-[5.4rem]  md:right-10">
+      <div className=" absolute top-[13rem]  right-[0.6rem]    md:top-[8.4rem] lg:top-[5.4rem] md:right-10">
         <div className="flex gap-1 flex-col">
           <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">
             Create New Team

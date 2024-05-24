@@ -1,25 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { BarChart } from "@mui/x-charts/BarChart";
-import { useEffect, useState, useCallback } from "react";
-import useAxios from "../service/useAxios";
+import { useSelector } from "react-redux";
 import { axisClasses } from "@mui/x-charts/ChartsAxis";
 
 const TopSkills = () => {
-  const [data, setData] = useState([]);
-  const { axiosPublic } = useAxios();
-
-  const getData = useCallback(async () => {
-    try {
-      const fetchedData = await axiosPublic();
-      setData(fetchedData.data.data);
-    } catch (error) {
-      console.error("Data fetch error:", error);
-    }
-  }, [axiosPublic]);
-
-  useEffect(() => {
-    getData();
-  }, [getData]);
+  const { data } = useSelector((state) => state.data);
 
   const skills = data?.top_skills?.map((item) => item.skill) || [];
   const employees = data?.top_skills?.map((item) => item.employees) || [];
