@@ -5,7 +5,7 @@ import { axisClasses } from "@mui/x-charts/ChartsAxis";
 import { useSelector } from "react-redux";
 
 const Activity = () => {
-  const { data } = useSelector((state) => state.data);
+  const { data } = useSelector((state) => state.data); //data okuma işlemi
 
   const info = data?.activity_hours;
 
